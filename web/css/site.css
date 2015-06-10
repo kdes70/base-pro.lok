@@ -20,7 +20,13 @@ body {
     border-top: 1px solid #ddd;
     padding-top: 20px;
 }
+h1 {
+    display: none;
+}
 
+.jumbotron h1 {
+    display: block;
+}
 .jumbotron {
     text-align: center;
     background-color: transparent;
