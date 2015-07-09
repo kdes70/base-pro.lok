@@ -1,8 +1,8 @@
 <?php
 /* @var $this yii\web\View */
-$this->title = Yii::$app->name;
+$this->title = 'My Yii Application';
 ?>
-<div class="main-default-index">
+<div class="site-index">
 
     <div class="jumbotron">
         <h1>Congratulations!</h1>
