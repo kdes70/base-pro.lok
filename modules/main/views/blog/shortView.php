@@ -9,12 +9,19 @@ use yii\bootstrap\Carousel;
 
     <p><span class="glyphicon glyphicon-time"></span> Posted on August 28, 2013 at 10:00 PM</p>
     <hr>
-<?php foreach ($model->getImages() as $image): ?>
-    <?php  $items[] = '<img class="img-responsive" src="' . $image->getUrl('750x400') . '" alt="">'; ?>
-<?php endforeach; ?>
 
+<?php foreach ($model->getImages() as $image): ?>
+    <?php if($image):?>
+    <?php  $items[] = '<img class="img-responsive" src="' . $image->getUrl('750x400') . '" alt="">'; ?>
+        <?php endif;?>
+<?php endforeach; ?>
+<?php if($items):?>
 <?echo Carousel::widget([
-    'items' => $items
+    'items' => $items,
+    'controls' => [
+        '<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span><span class="sr-only">Previous</span>',
+        '<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span><span class="sr-only">Next</span>'
+    ]
     // the item contains only the image
     // $items,
     // equivalent to the above
@@ -27,6 +34,8 @@ use yii\bootstrap\Carousel;
 //        ],
 
 ]);?>
+
+<?php endif;?>
 <!--    <img class="img-responsive" src="http://placehold.it/900x300" alt="">-->
     <hr>
     <p><?=  \yii\helpers\StringHelper::truncate($model->text,200,'...'); ?></p>

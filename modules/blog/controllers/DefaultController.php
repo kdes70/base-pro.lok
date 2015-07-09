@@ -74,7 +74,11 @@ class DefaultController extends Controller
             $model = new Blog();
             // create post
 
+       // var_dump(Yii::$app->request->post());
             if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+
+
                 return $this->redirect(['view', 'id' => $model->id]);
             } else {
 
@@ -108,7 +112,7 @@ class DefaultController extends Controller
 
 
 
-
+      //  var_dump(Yii::$app->request->post());
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 

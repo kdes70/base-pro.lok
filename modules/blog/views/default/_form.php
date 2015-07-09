@@ -103,48 +103,35 @@ use dosamigos\selectize\SelectizeTextInput;
 
     </div>
 
-    <div class="col-lg-6">
+
     <?= $form->field($model, 'image')->fileInput()?>
+
+    <div class="row">
+
+
+            <?=$form->field($model, 'status')->widget(Switchery::classname(), [
+                'clientOptions' => [
+                    'color'              => '#64bd63',
+                    'secondaryColor'     => '#dfdfdf',
+                    'jackColor'          => '#fff',
+                    'jackSecondaryColor' => null,
+                    'className'          => 'switchery js-switch',
+                    'disabled'           => false,
+                    'disabledOpacity'    => 0.5,
+                    'speed'              => '0.3s',
+                    'size'               => 'default',
+
+                ],
+
+            ])->label(false);?>
+
+
+
+        <div class="form-group">
+            <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        </div>
     </div>
-    <div class="col-lg-6">
 
-
-    </div>
-
-
-
-    <?= '<label>Статус </label>';
-        echo Switchery::widget([
-            'name' => 'status',
-            'clientOptions' => [
-                'color'              => '#64bd63',
-                'secondaryColor'     => '#dfdfdf',
-                'jackColor'          => '#fff',
-                'jackSecondaryColor' => null,
-                'className'          => 'switchery js-switch',
-                'disabled'           => false,
-                'disabledOpacity'    => 0.5,
-                'speed'              => '0.3s',
-                'size'               => 'default',
-            ],
-            'clientChangeEvent' => new JsExpression('function() {}'),
-        ]);?>
-
-<!--    --><?//=$form->field($model, 'status')->widget(SwitchInput::classname(), [
-//            'type' => SwitchInput::CHECKBOX
-//        ]);?>
-<!---->
-<!--    --><?//=SwitchInput::widget([
-//            'name' => 'status_1',
-//            'type' => SwitchInput::RADIO,
-//            'items' => [['value' =>'1'],['value' =>'2']]
-//
-//        ]);?>
-
-
-    <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-    </div>
 
     <?php ActiveForm::end(); ?>
 

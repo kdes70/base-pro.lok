@@ -13,22 +13,26 @@
 
         <div class="row">
 
-        <div class="col-md-8">
-            <?php  foreach ($blog_post->models as $model) {
-                echo $this->render('shortView', ['model' => $model]);
-            } ?>
+            <div class="col-md-8">
+                <?php  foreach ($blog_post->models as $model) {
+                    echo $this->render('shortView', ['model' => $model]);
+                } ?>
 
-            <!-- Pager -->
-            <ul class="pager">
-                <li class="previous">
-                    <a href="#">&larr; Older</a>
-                </li>
-                <li class="next">
-                    <a href="#">Newer &rarr;</a>
-                </li>
-            </ul>
-        </div>
+
+                <!-- Pager -->
+                <ul class="pager">
+                    <li class="previous">
+                        <a href="#">&larr; Older</a>
+                    </li>
+                    <li class="next">
+                        <a href="#">Newer &rarr;</a>
+                    </li>
+                </ul>
+
+            </div>
             <!-- Blog Sidebar Widgets Column -->
+
+
             <div class="col-md-4">
 
                 <!-- Blog Search Well -->
@@ -86,6 +90,7 @@
                 </div>
 
             </div>
+
 
         </div>
 
