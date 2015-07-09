@@ -10,7 +10,7 @@ use yii\bootstrap\Carousel;
     <p><span class="glyphicon glyphicon-time"></span> Posted on August 28, 2013 at 10:00 PM</p>
     <hr>
 <?php foreach ($model->getImages() as $image): ?>
-    <?php  $items[] = '<img class="img-responsive" src="' . $image->getUrl('900x400') . '" alt="">'; ?>
+    <?php  $items[] = '<img class="img-responsive" src="' . $image->getUrl('750x400') . '" alt="">'; ?>
 <?php endforeach; ?>
 
 <?echo Carousel::widget([

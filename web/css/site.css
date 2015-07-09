@@ -21,6 +21,13 @@ body {
     padding-top: 20px;
 }
 
+    /*Заголовк страниц*/
+body > div.wrapper > div.content-wrapper > section.content > div > h1{
+    display: none;
+}
+.jumbotron h1 {
+    display: block;
+}
 .jumbotron {
     text-align: center;
     background-color: transparent;

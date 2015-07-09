@@ -21,7 +21,7 @@
 //                        'idField' => 'id', // id field of model User
 //                    ]
 //                ],
-//                'layout' => 'top-menu', // default null. other avaliable value 'right-menu' and 'top-menu'
+//                'layout' => '@app\admin\main', // default null. other avaliable value 'right-menu' and 'top-menu'
 //                'menus' => [
 //                    'assignment' => [
 //                        'label' => 'Grand Access' // change label
@@ -29,9 +29,26 @@
 //                    'route' => null, // disable menu
 //                ],
 //            ],
+            'yii2images' => [
+                'class' => 'rico\yii2images\Module',
+                //be sure, that permissions ok
+                //if you cant avoid permission errors you have to create "images" folder in web root manually and set 777 permissions
+                'imagesStorePath' => 'upload/store', //path to origin images
+                'imagesCachePath' => 'upload/cache', //path to resized copies
+                'graphicsLibrary' => 'GD', //but really its better to use 'Imagick'
+                //'placeHolderPath' => '@webroot/images/placeHolder.png', // if you want to get placeholder when image not exists, string will be processed by Yii::getAlias
+            ],
+
             'admin' => [
                 'class' => 'app\modules\admin\AdminModule',
                 'layout' => 'main',
+                'controllerMap' => [
+                    'assignment' => [
+                        'class' => 'mdm\admin\controllers\AssignmentController',
+                        'userClassName' => 'app\modules\user\models\User',
+                        'idField' => 'id', // id field of model User
+                    ]
+                ],
             ],
             'main' => [
                 'class' => 'app\modules\main\Module',
@@ -41,6 +58,9 @@
             ],
             'blog' => [
                 'class' => 'app\modules\blog\Module',
+            ],
+            'dish' => [
+                'class' => 'app\modules\dish\Module',
             ],
         ],
         'components' => [
@@ -59,11 +79,11 @@
                 'rules' => [
                     '' => 'main/default/index',
                     'contact' => 'main/contact/index',
-                    'admin/<controller:\w+>/<action:[\w-]+>/<id:\d+>' => 'admin/<controller>/<action>',
-                    'admin/<module:\w+>/<controller:\w+>/<action:[\w-]+>/<id:\d+>' => 'admin/<module>/<controller>/<action>',
-                    'tags/list/<query:\w+>'=>'/blog/tags/list/<_a>',
+                    'blogs' => 'main/blog/index',
+                    'blog/show/<id:\d+>' => 'main/blog/show/id',
+                    'blog/show/' => 'blog/default/show/',
                     '<_a:error>' => 'main/default/<_a>',
-                    '<_a:(login|logout|signup|confirm-email|request-password-reset|reset-password)>' => 'user/default/<_a>',
+                    '<_a:(login|logout)>' => 'user/default/<_a>',
                     '<_m:[\w\-]+>/<_c:[\w\-]+>/<_a:[\w\-]+>/<id:\d+>' => '<_m>/<_c>/<_a>',
                     '<_m:[\w\-]+>/<_c:[\w\-]+>/<id:\d+>' => '<_m>/<_c>/view',
                     '<_m:[\w\-]+>' => '<_m>/default/index',

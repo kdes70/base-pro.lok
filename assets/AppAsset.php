@@ -19,10 +19,13 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/site.css',
+        'css/tags.css',
     ];
     public $js = [
     ];
     public $depends = [
+        'app\assets\Html5ShivAsset',
+        'app\assets\RespondAsset',
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
     ];
