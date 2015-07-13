@@ -13,6 +13,8 @@
         "source": "https://github.com/yiisoft/yii2"
     },
     "minimum-stability": "stable",
+    "prefer-stable": true,
+
     "require": {
         "php": ">=5.4.0",
         "yiisoft/yii2": ">=2.0.4",
@@ -32,7 +34,8 @@
         "2amigos/yii2-transliterator-helper": "*",
         "2amigos/yii2-file-input-widget": "~1.0",
         "kartik-v/yii2-widget-datepicker": "*",
-        "kartik-v/yii2-field-range": "*"
+        "kartik-v/yii2-field-range": "*",
+        "iutbay/yii2-kcfinder" : "*"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

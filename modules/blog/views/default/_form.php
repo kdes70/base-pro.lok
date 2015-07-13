@@ -8,7 +8,11 @@ use yii\helpers\Url;
 use app\modules\blog\models\Category;
 use dosamigos\selectize\SelectizeTextInput;
  use dosamigos\taggable\Taggable;
-    use mihaildev\ckeditor\CKEditor;
+   // use mihaildev\ckeditor\CKEditor;
+
+    use app\components\widgets\CKEditor;
+    use iutbay\yii2kcfinder\KCFinderInputWidget ;
+
     use toxor88\switchery\Switchery;
     use yii\web\JsExpression;
     use kartik\switchinput\SwitchInput;
@@ -80,6 +84,12 @@ use dosamigos\selectize\SelectizeTextInput;
             'inline' => false, //по умолчанию false
         ],
     ]); ?>
+
+    <?php echo
+    $form->field($model, 'images')->widget(KCFinderInputWidget::className(), [
+        'multiple' => true,
+    ]);
+    ?>
 
     <div class="form_group">
         <div class="col-md-offset-2 col-md-10">
