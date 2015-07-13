@@ -8,7 +8,7 @@
 
     return [
         'name' => 'KD-project',
-        'language' => 'ru',
+        'language' => 'ru-RU',
         'basePath' => dirname(__DIR__),
         'bootstrap' => ['log'],
         'modules' => [
@@ -79,13 +79,11 @@
                 'rules' => [
                     '' => 'main/default/index',
                     'contact' => 'main/contact/index',
-                    'blogs' => 'main/blog/index',
-                    'blog/show/<id:\d+>' => 'main/blog/show/id',
-                    'blog/show/' => 'blog/default/show/',
                     '<_a:error>' => 'main/default/<_a>',
-                    '<_a:(login|logout)>' => 'user/default/<_a>',
-                    '<_m:[\w\-]+>/<_c:[\w\-]+>/<_a:[\w\-]+>/<id:\d+>' => '<_m>/<_c>/<_a>',
+                    '<_a:(login|logout|signup|confirm-email|request-password-reset|reset-password)>' => 'user/default/<_a>',
+
                     '<_m:[\w\-]+>/<_c:[\w\-]+>/<id:\d+>' => '<_m>/<_c>/view',
+                    '<_m:[\w\-]+>/<_c:[\w\-]+>/<id:\d+>/<_a:[\w\-]+>' => '<_m>/<_c>/<_a>',
                     '<_m:[\w\-]+>' => '<_m>/default/index',
                     '<_m:[\w\-]+>/<_c:[\w\-]+>' => '<_m>/<_c>/index',
                 ],

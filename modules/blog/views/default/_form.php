@@ -3,7 +3,8 @@
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
-use yii\widgets\ActiveForm;
+//use yii\widgets\ActiveForm;
+  use yii\bootstrap\ActiveForm;
 use app\modules\blog\models\Category;
 use dosamigos\selectize\SelectizeTextInput;
  use dosamigos\taggable\Taggable;
@@ -49,7 +50,7 @@ use dosamigos\selectize\SelectizeTextInput;
             ])->hint(Yii::t('app', 'HINT_TAGS')) ?>
         </div>
     <div class="col-lg-6">
-        <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+        <?= $form->field($model, 'title')->textInput(['maxlength' => true])->hint('заголовок') ?>
     </div>
     <div class="col-lg-6">
 <!--        --><?//= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
@@ -88,7 +89,7 @@ use dosamigos\selectize\SelectizeTextInput;
                 <? foreach($images as $image):?>
                     <? if($image):?>
                 <div class="col-md-3 text-center">
-                    <img src="<?= $image->getUrl('x300')?>" alt=""/>
+                    <img src="<?= $image->getUrl('200x200')?>" alt=""/>
                 </div>
                     <? endif; ?>
                 <? endforeach;?>
@@ -104,9 +105,18 @@ use dosamigos\selectize\SelectizeTextInput;
     </div>
 
 
-    <?= $form->field($model, 'image')->fileInput()?>
+<!--    --><?//= $form->field($model, 'image')->fileInput()?>
 
-    <div class="row">
+    <?= $form->field($model, 'image')->widget(\dosamigos\fileinput\BootstrapFileInput::className(), [
+        'options' => ['accept' => 'image/*', 'multiple' => true],
+        'clientOptions' => [
+            'previewFileType' => 'text',
+            'browseClass' => 'btn btn-success',
+            'uploadClass' => 'btn btn-info',
+            'removeClass' => 'btn btn-danger',
+            'removeIcon' => '<i class="glyphicon glyphicon-trash"></i> '
+        ]
+    ]);?>
 
 
             <?=$form->field($model, 'status')->widget(Switchery::classname(), [
@@ -126,13 +136,9 @@ use dosamigos\selectize\SelectizeTextInput;
             ])->label(false);?>
 
 
-
-        <div class="form-group">
-            <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-        </div>
+    <div class="form-group">
+        <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
-
-
     <?php ActiveForm::end(); ?>
 
 </div>

@@ -99,7 +99,7 @@ class DefaultController extends Controller
 
     public function actionConfirmEmail($token)
     {
-        var_dump('YYYYYYYYYYYYYYYY');exit;
+       // var_dump('YYYYYYYYYYYYYYYY');exit;
         try {
             $model = new ConfirmEmailForm($token);
         } catch (InvalidParamException $e) {

@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+    use app\components\grid\ActionColumn;
     use app\modules\blog\models\Blog;
 
     use toxor88\switchery\Switchery;
@@ -30,15 +31,25 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-
-            'category_id.title',
-
-            'user_id',
+            [
+                'attribute' => 'category_id',
+                'value' => 'category.title'
+            ],
+            [
+              'attribute' => 'user_id',
+                'value' =>'user.username',
+            ],
             'title',
             'slug',
+            [
+                'attribute' => 'status',
+                'value' => function ($data) {
+                    return ($data->status == 1) ? 'Опубликован' : 'Черновик';
+                }
+            ],
             // 'text:ntext',
             // 'prev_img',
-            [
+            /*[
                 'attribute'=>'status',
                 'contentOptions' =>['class' => 'table_class','style'=>'display:block;'],
                 'content'=>function($data){
@@ -55,16 +66,22 @@ $this->params['breadcrumbs'][] = $this->title;
                             'speed'              => '0.3s',
                             'size'               => 'small',
                         ],
-                        'clientChangeEvent' => new JsExpression('function() {   }'),
+                        //'clientChangeEvent' => new JsExpression('function() {   }'),
                     ]);
                 }
+            ],*/
+
+            [
+                'attribute' =>  'publication_at',
+                'format' =>  ['date', 'HH:mm dd.MM.YYYY'],
+              //  'options' => ['width' => '200']
             ],
-            'publication_at',
+
             // 'created_at',
             // 'updated_at',
 
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => ActionColumn::className()],
         ],
     ]); ?>
 

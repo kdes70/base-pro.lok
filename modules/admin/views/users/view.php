@@ -4,13 +4,15 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\modules\blog\models\Blog */
+/* @var $model app\modules\user\models\User */
 
-$this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Blogs'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+
+    $this->title = $model->username;
+    $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'ADMIN'), 'url' => ['default/index']];
+    $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'ADMIN_USERS'), 'url' => ['index']];
+    $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="blog-view">
+<div class="user-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -29,23 +31,14 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'category_id',
-            'user_id',
-            'title',
-            'slug',
-            'text:ntext',
-            'image',
-            'prev_img',
+            'username',
+            'email:email',
+            'created_at:datetime',
+            'updated_at:datetime',
             [
                 'attribute' => 'status',
-                'value' => ($model->status == 1) ? 'Опубликован' : 'Черновик',
+                'value' => $model->getStatusName(),
             ],
-            'created_at:datetime',
-//            [
-//                'attribute' => 'created_at',
-//                'value' => Yii::$app->formatter->asDatetime($model->created_at),
-//            ],
-            'updated_at',
         ],
     ]) ?>
 

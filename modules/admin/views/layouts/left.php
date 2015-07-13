@@ -12,7 +12,7 @@ use yii\bootstrap\Nav;
                 <img src="<?= $directoryAsset ?>/img/user2-160x160.jpg" class="img-circle" alt="User Image"/>
             </div>
             <div class="pull-left info">
-                <p>Alexander Pierce</p>
+                <p><?php echo Yii::$app->user->identity->username?></p>
 
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
@@ -36,12 +36,15 @@ use yii\bootstrap\Nav;
                 'encodeLabels' => false,
                 'options' => ['class' => 'sidebar-menu'],
                 'items' => [
+                    '<li class="header">NAVIGATION</li>',
+                    ['label' => '<i class="fa fa-dashboard"></i><span>dashboard</span>', 'url' => ['/admin']],
                     '<li class="header">Menu Yii2</li>',
                     ['label' => '<i class="fa fa-file-code-o"></i><span>Gii</span>', 'url' => ['/gii']],
                     ['label' => '<i class="fa fa-dashboard"></i><span>Debug</span>', 'url' => ['/debug']],
                     '<li class="header">SETING</li>',
+                    ['label' => '<i class="fa fa-users"></i><span>Users</span>', 'url' => ['/admin/users/index/']],
                     ['label' => '<i class="fa fa-book"></i><span>Blog</span>', 'url' => ['/blog/default/index/']],
-                    ['label' => '<i class="fa fa-book"></i><span>Category</span>', 'url' => ['/blog/category/index/']],
+                    ['label' => '<i class="fa fa-folder"></i><span>Category</span>', 'url' => ['/blog/category/index/']],
                     [
                         'label' => '<i class="glyphicon glyphicon-lock"></i><span>Sing in</span>', //for basic
                         'url' => ['/login'],

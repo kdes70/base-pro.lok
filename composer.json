@@ -29,7 +29,10 @@
         "kartik-v/yii2-widget-switchinput": "*",
         "2amigos/yii2-date-time-picker-widget": "~1.0",
         "costa-rico/yii2-images": "dev-master",
-        "2amigos/yii2-transliterator-helper": "*"
+        "2amigos/yii2-transliterator-helper": "*",
+        "2amigos/yii2-file-input-widget": "~1.0",
+        "kartik-v/yii2-widget-datepicker": "*",
+        "kartik-v/yii2-field-range": "*"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

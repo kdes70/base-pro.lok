@@ -1,4 +1,5 @@
 <?php
+    use yii\widgets\LinkPager;
     /* @var $this yii\web\View */
     $this->title = Yii::$app->name;
 ?>
@@ -14,19 +15,23 @@
         <div class="row">
 
             <div class="col-md-8">
-                <?php  foreach ($blog_post->models as $model) {
+                <?php  foreach ($blog_post as $model) {
                     echo $this->render('shortView', ['model' => $model]);
                 } ?>
 
 
                 <!-- Pager -->
                 <ul class="pager">
-                    <li class="previous">
-                        <a href="#">&larr; Older</a>
-                    </li>
-                    <li class="next">
-                        <a href="#">Newer &rarr;</a>
-                    </li>
+                    <?php // display pagination
+                        echo LinkPager::widget([
+                            'pagination' => $pages,
+                        ]);?>
+<!--                    <li class="previous">-->
+<!--                        <a href="#">&larr; Older</a>-->
+<!--                    </li>-->
+<!--                    <li class="next">-->
+<!--                        <a href="#">Newer &rarr;</a>-->
+<!--                    </li>-->
                 </ul>
 
             </div>
@@ -53,33 +58,28 @@
                 <div class="well">
                     <h4>Blog Categories</h4>
                     <div class="row">
-                        <div class="col-lg-6">
-                            <ul class="list-unstyled">
-                                <li><a href="#">Category Name</a>
-                                </li>
-                                <li><a href="#">Category Name</a>
-                                </li>
-                                <li><a href="#">Category Name</a>
-                                </li>
-                                <li><a href="#">Category Name</a>
-                                </li>
+
+                        <?php if($category):?>
+                            <ul class="nav nav-list">
+                                <li class="nav-header">What we are?</li>
+                                <li class="active"><a href="#">Home</a></li>
+                                <?php foreach ($category as $item):?>
+                                    <li><a href="#"><?= $item->title ?> <span class="badge badge-important">6</span></a></li>
+                                <?php endforeach;?>
+                                <li class="nav-header">Our Friend</li>
+                                <li><a href="#">Yahoo!</a></li>
+                                <li><a href="#">Bing</a></li>
+                                <li><a href="#">Microsoft</a></li>
+                                <li><a href="#">Gadgetic World</a></li>
                             </ul>
-                        </div>
-                        <!-- /.col-lg-6 -->
-                        <div class="col-lg-6">
-                            <ul class="list-unstyled">
-                                <li><a href="#">Category Name</a>
-                                </li>
-                                <li><a href="#">Category Name</a>
-                                </li>
-                                <li><a href="#">Category Name</a>
-                                </li>
-                                <li><a href="#">Category Name</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- /.col-lg-6 -->
+
+
+
+
+                        <?php endif;?>
+
                     </div>
+
                     <!-- /.row -->
                 </div>
 

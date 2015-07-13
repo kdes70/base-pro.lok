@@ -20,8 +20,10 @@ class AppAsset extends AssetBundle
     public $css = [
         'css/site.css',
         'css/tags.css',
+        'css/monokai_sublime.css',
     ];
     public $js = [
+        'js\highlight.pack.js',
     ];
     public $depends = [
         'app\assets\Html5ShivAsset',

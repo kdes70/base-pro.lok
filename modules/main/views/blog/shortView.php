@@ -3,11 +3,11 @@ use yii\bootstrap\Carousel;
 ?>
 <!-- First Blog Post -->
     <h2>
-        <a href="/main/blog/show/<?=$model->id?>"><?=$model->title?></a>
+        <a href="/blog/show/<?=$model->slug?>"><?=$model->title?></a>
     </h2>
     <p class="lead">by <a href="index.php"><?=$model->user_id?></a></p>
 
-    <p><span class="glyphicon glyphicon-time"></span> Posted on August 28, 2013 at 10:00 PM</p>
+    <p><span class="glyphicon glyphicon-time"></span> <?php echo Yii::$app->formatter->asDate($model->publication_at, 'd MMMM yyyy');?></p></p>
     <hr>
 
 <?php foreach ($model->getImages() as $image): ?>
@@ -36,6 +36,7 @@ use yii\bootstrap\Carousel;
 ]);?>
 
 <?php endif;?>
+<span class="label label-info"><?=$model->category->title ?></span>
 <!--    <img class="img-responsive" src="http://placehold.it/900x300" alt="">-->
     <hr>
     <p><?=  \yii\helpers\StringHelper::truncate($model->text,200,'...'); ?></p>
@@ -43,17 +44,14 @@ use yii\bootstrap\Carousel;
 <hr/>
 <div class="row">
     <p>Теги:</p>
+    <? if ($model->tags):?>
     <ul class="tags blue">
-        <? if ($model->tags):?>
             <? foreach($model->tags as $tag):?>
                 <li><a href="index.html"><?= $tag['name'];?> <span>31</span></a></li>
             <? endforeach;?>
-        <? endif;?>
-
     </ul>
+    <? endif;?>
 </div>
-
-<p></p>
 
 <hr>
 <!-- End Blog Post -->

@@ -21,6 +21,7 @@ use Yii;
  */
 class Category extends \yii\db\ActiveRecord
 {
+    const STATUS_PUBLISH = 1;
     /**
      * @inheritdoc
      */

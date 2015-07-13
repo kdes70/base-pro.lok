@@ -6,7 +6,6 @@ namespace app\modules\blog\controllers;
 use Yii;
 use app\modules\blog\models\Blog;
 use app\modules\blog\models\BlogSearch;
-use yii\behaviors\TimestampBehavior;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -30,7 +29,7 @@ class DefaultController extends Controller
                     'delete' => ['post'],
                 ],
             ],
-             TimestampBehavior::className(),
+
         ];
     }
 
@@ -71,6 +70,12 @@ class DefaultController extends Controller
      */
     public function actionCreate()
     {
+//        if(\Yii::$app->user->can('createPost'))
+//        {
+//            //выполняем какое то действие
+//            var_dump(\Yii::$app->user);
+//        }
+//        else throw new ForbiddenHttpException('У вас недостаточно прав для выполнения указанного действия');
             $model = new Blog();
             // create post
 

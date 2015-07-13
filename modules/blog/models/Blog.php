@@ -6,6 +6,8 @@ use Yii;
 use dosamigos\taggable\Taggable;
 use yii\web\Response;
 use yii\data\ActiveDataProvider;
+use yii\behaviors\TimestampBehavior;
+use app\modules\user\models\User;
 
 /**
  * This is the model class for table "{{%blog}}".
@@ -42,6 +44,9 @@ class Blog extends \yii\db\ActiveRecord
             [
                 'class' => Taggable::className(),
             ],
+
+            TimestampBehavior::className(),
+
             'image' => [
                 'class' => 'rico\yii2images\behaviors\ImageBehave',
             ],
@@ -59,13 +64,13 @@ class Blog extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['category_id', 'user_id', 'status'], 'integer'],
+            [['status'], 'integer'],
             [['title', 'slug', 'text'], 'required'],
             ['text', 'string'],
             ['image', 'file'],
 
             ['tagNames', 'match', 'pattern' => '/^[\w\s,]+$/', 'message' => 'В тегах можно использовать только буквы.'],
-            ['tagNames', 'safe'],
+            [['category_id', 'tagNames', 'user_id', 'publication_at'], 'safe'],
 
            // ['tagNames', 'normalizeTags'],
             [['title', 'slug', 'prev_img'], 'string', 'max' => 255]
@@ -97,13 +102,12 @@ class Blog extends \yii\db\ActiveRecord
      * Возвращает опубликованные посты
      * @return ActiveDataProvider
      */
-    function getPublishedPosts()
+    public static function getPublishedPosts()
     {
-        return new ActiveDataProvider([
-            'query' => Blog::find()
+        return self::find()
                 ->where(['status' => self::STATUS_PUBLISH])
-                ->orderBy('id  DESC')
-        ]);
+                ->with('category')
+                ->orderBy('id DESC');
     }
 
 
@@ -151,21 +155,7 @@ class Blog extends \yii\db\ActiveRecord
 
 
 
-    public function actionList($query)
-    {
-        $models = Tags::findAllByName($query);
-        $items = [];
 
-        foreach ($models as $model) {
-            $items[] = ['name' => $model->name];
-        }
-        // We know we can use ContentNegotiator filter
-        // this way is easier to show you here :)
-        Yii::$app->response->format = Response::FORMAT_JSON;
-
-        return $items;
-
-    }
 
 //    public function normalizeTags($attribute,$params)
 //    {

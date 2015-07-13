@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+    use yii\helpers\ArrayHelper;
+    use app\modules\blog\models\Category;
 
 /* @var $this yii\web\View */
 /* @var $model app\modules\blog\models\Category */
@@ -12,7 +14,7 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'parent_id')->dropDownList(['maxlength' => true]) ?>
+    <?= $form->field($model, 'parent_id')->dropDownList(ArrayHelper::map(Category::find()->all(), 'id', 'title'),['prompt' => 'Главная']) ?>
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
