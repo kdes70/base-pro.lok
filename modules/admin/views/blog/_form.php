@@ -85,10 +85,31 @@ use dosamigos\selectize\SelectizeTextInput;
         ],
     ]); ?>
 
-    <?php echo
-    $form->field($model, 'images')->widget(KCFinderInputWidget::className(), [
-        'multiple' => true,
-    ]);
+    <?php
+
+//        $KCFinder = new KCFinderInputWidget;
+//        $kcfOptions = array_merge($KCFinder->$kcfDefaultOptions, [
+//            'uploadURL' => Yii::getAlias('@web').'/upload',
+//            'access' => [
+//                'files' => [
+//                    'upload' => true,
+//                    'delete' => false,
+//                    'copy' => false,
+//                    'move' => false,
+//                    'rename' => false,
+//                ],
+//                'dirs' => [
+//                    'create' => true,
+//                    'delete' => false,
+//                    'rename' => false,
+//                ],
+//            ],
+//        ]);
+//
+//        // Set kcfinder session options
+//        Yii::$app->session->set('KCFINDER', $kcfOptions);
+
+
     ?>
 
     <div class="form_group">

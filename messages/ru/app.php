@@ -9,6 +9,8 @@ return [
     'NAV_PROFILE' => 'Профиль',
     'NAV_LOGOUT' => 'Выход',
     'NAW_DISH_MENU' => 'Меню ресторана',
+    'NAV_ADMIN' => 'Админ панель',
+    'ADMIN_USERS' => 'Пользователи',
 
     'BUTTON_SEND' => 'Отправить',
     'BUTTON_SAVE' => 'Сохранить',
@@ -71,7 +73,8 @@ return [
     'BLOG_UPDATE' => 'Редактировать',
     'BLOG_DELETE' => 'Удалить',
     'BLOG_CREATE' => 'Создать',
-
+    'BLOG_STATUS_PUBLISH' => 'Опубликован',
+    'BLOG_STATUS_DONT_PUBLISH' => 'Черновик',
 
     'HINT_TAGS' => 'Используйте запятые для разделения меток',
 

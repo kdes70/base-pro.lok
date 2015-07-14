@@ -43,7 +43,7 @@ use yii\bootstrap\Nav;
                     ['label' => '<i class="fa fa-dashboard"></i><span>Debug</span>', 'url' => ['/debug']],
                     '<li class="header">SETING</li>',
                     ['label' => '<i class="fa fa-users"></i><span>Users</span>', 'url' => ['/admin/users/index/']],
-                    ['label' => '<i class="fa fa-book"></i><span>Blog</span>', 'url' => ['/blog/default/index/']],
+                    ['label' => '<i class="fa fa-book"></i><span>Blog</span>', 'url' => ['/admin/blog/index/']],
                     ['label' => '<i class="fa fa-folder"></i><span>Category</span>', 'url' => ['/blog/category/index/']],
                     [
                         'label' => '<i class="glyphicon glyphicon-lock"></i><span>Sing in</span>', //for basic

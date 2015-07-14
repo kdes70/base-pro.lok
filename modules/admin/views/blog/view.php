@@ -7,6 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\modules\blog\models\Blog */
 
 $this->title = $model->title;
+    $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'ADMIN'), 'url' => ['default/index']];
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Blogs'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -29,23 +30,29 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'category_id',
-            'user_id',
+            [
+                'attribute' => 'category_id',
+                'value' => $model->category->title
+            ],
+            [
+                'attribute' => 'user_id',
+                'value' => $model->user->username
+            ],
+
+
             'title',
             'slug',
             'text:ntext',
-            'image',
-            'prev_img',
+
+            [
+                'attribute' =>  'image',
+            ],
             [
                 'attribute' => 'status',
                 'value' => ($model->status == 1) ? 'Опубликован' : 'Черновик',
             ],
             'created_at:datetime',
-//            [
-//                'attribute' => 'created_at',
-//                'value' => Yii::$app->formatter->asDatetime($model->created_at),
-//            ],
-            'updated_at',
+            'updated_at:datetime',
         ],
     ]) ?>
 

@@ -1,13 +1,13 @@
 <?php
 
-namespace app\modules\blog\controllers;
+namespace app\modules\admin\controllers;
 
-use Yii;
 use app\modules\blog\models\Category;
 use app\modules\blog\models\CategorySearch;
+use Yii;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * CategoryController implements the CRUD actions for Category model.

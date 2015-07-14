@@ -12,19 +12,9 @@
 /**
  * UsersController implements the CRUD actions for User model.
  */
-class UsersController extends Controller
+class UsersController extends BaseController
 {
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['post'],
-                ],
-            ],
-        ];
-    }
+
 
     /**
      * Lists all User models.
@@ -41,17 +31,7 @@ class UsersController extends Controller
         ]);
     }
 
-    /**
-     * Displays a single User model.
-     * @param string $id
-     * @return mixed
-     */
-    public function actionView($id)
-    {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
-    }
+
 
     public function actionCreate()
     {
@@ -82,18 +62,6 @@ class UsersController extends Controller
         }
     }
 
-    /**
-     * Deletes an existing User model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param string $id
-     * @return mixed
-     */
-    public function actionDelete($id)
-    {
-        $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
-    }
 
     /**
      * Finds the User model based on its primary key value.

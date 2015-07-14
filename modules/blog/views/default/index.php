@@ -1,88 +1,98 @@
 <?php
-
-use yii\helpers\Html;
-use yii\grid\GridView;
-    use app\components\grid\ActionColumn;
-    use app\modules\blog\models\Blog;
-
-    use toxor88\switchery\Switchery;
-    use yii\web\JsExpression;
-/* @var $this yii\web\View */
-/* @var $searchModel app\modules\blog\models\BlogSearch */
-/* @var $dataProvider yii\data\ActiveDataProvider */
-
-$this->title = Yii::t('app', 'Blogs');
-$this->params['breadcrumbs'][] = $this->title;
+    use yii\widgets\LinkPager;
+    /* @var $this yii\web\View */
+    $this->title = Yii::$app->name;
 ?>
-<div class="blog-index">
+<div class="main-default-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <div class="jumbotron">
+        <h1>Blog!</h1>
+        <p class="lead">You have successfully created your Yii-powered application.</p>
+    </div>
 
-    <p>
-        <?= Html::a(Yii::t('app', 'Create Blog'), ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+    <div class="body-content">
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-       // 'layout'=>"{sorter}\n{pager}\n{summary}\n{items}",
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+        <div class="row">
 
-            'id',
-            [
-                'attribute' => 'category_id',
-                'value' => 'category.title'
-            ],
-            [
-              'attribute' => 'user_id',
-                'value' =>'user.username',
-            ],
-            'title',
-            'slug',
-            [
-                'attribute' => 'status',
-                'value' => function ($data) {
-                    return ($data->status == 1) ? 'Опубликован' : 'Черновик';
-                }
-            ],
-            // 'text:ntext',
-            // 'prev_img',
-            /*[
-                'attribute'=>'status',
-                'contentOptions' =>['class' => 'table_class','style'=>'display:block;'],
-                'content'=>function($data){
-                    return  Switchery::widget([
-                        'name' => 'status',
-                        'clientOptions' => [
-                            'color'              => '#64bd63',
-                            'secondaryColor'     => '#dfdfdf',
-                            'jackColor'          => '#fff',
-                            'jackSecondaryColor' => null,
-                            'className'          => 'switchery js-switch',
-                            'disabled'           => false,
-                            'disabledOpacity'    => 0.5,
-                            'speed'              => '0.3s',
-                            'size'               => 'small',
-                        ],
-                        //'clientChangeEvent' => new JsExpression('function() {   }'),
-                    ]);
-                }
-            ],*/
-
-            [
-                'attribute' =>  'publication_at',
-                'format' =>  ['date', 'HH:mm dd.MM.YYYY'],
-              //  'options' => ['width' => '200']
-            ],
-
-            // 'created_at',
-            // 'updated_at',
+            <div class="col-md-8">
+                <?php  foreach ($blog_post as $model) {
+                    echo $this->render('shortView', ['model' => $model]);
+                } ?>
 
 
-            ['class' => ActionColumn::className()],
-        ],
-    ]); ?>
+                <!-- Pager -->
+                <ul class="pager">
+                    <?php // display pagination
+                        echo LinkPager::widget([
+                            'pagination' => $pages,
+                        ]);?>
+<!--                    <li class="previous">-->
+<!--                        <a href="#">&larr; Older</a>-->
+<!--                    </li>-->
+<!--                    <li class="next">-->
+<!--                        <a href="#">Newer &rarr;</a>-->
+<!--                    </li>-->
+                </ul>
 
+            </div>
+            <!-- Blog Sidebar Widgets Column -->
+
+
+            <div class="col-md-4">
+
+                <!-- Blog Search Well -->
+                <div class="well">
+                    <h4>Blog Search</h4>
+                    <div class="input-group">
+                        <input type="text" class="form-control">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                    <!-- /.input-group -->
+                </div>
+
+                <!-- Blog Categories Well -->
+                <div class="well">
+                    <h4>Blog Categories</h4>
+                    <div class="row">
+
+                        <?php if($category):?>
+                            <ul class="nav nav-list">
+                                <li class="nav-header">What we are?</li>
+                                <li class="active"><a href="#">Home</a></li>
+                                <?php foreach ($category as $item):?>
+                                    <li><a href="#"><?= $item->title ?> <span class="badge badge-important">6</span></a></li>
+                                <?php endforeach;?>
+                                <li class="nav-header">Our Friend</li>
+                                <li><a href="#">Yahoo!</a></li>
+                                <li><a href="#">Bing</a></li>
+                                <li><a href="#">Microsoft</a></li>
+                                <li><a href="#">Gadgetic World</a></li>
+                            </ul>
+
+
+
+
+                        <?php endif;?>
+
+                    </div>
+
+                    <!-- /.row -->
+                </div>
+
+                <!-- Side Widget Well -->
+                <div class="well">
+                    <h4>Side Widget Well</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
 </div>

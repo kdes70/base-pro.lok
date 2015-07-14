@@ -30,6 +30,7 @@ use app\modules\user\models\User;
 class Blog extends \yii\db\ActiveRecord
 {
     const STATUS_PUBLISH = 1;
+    const STATUS_DONT_PUBLISH = 0;
 
     /**
      * @inheritdoc
@@ -98,6 +99,20 @@ class Blog extends \yii\db\ActiveRecord
         ];
     }
 
+    public function getStatusName()
+    {
+        $statuses = self::getStatusesArray();
+        return isset($statuses[$this->status]) ? $statuses[$this->status] : '';
+    }
+
+    public static function getStatusesArray()
+    {
+        return [
+
+            self::STATUS_PUBLISH => Yii::t('app', 'BLOG_STATUS_PUBLISH'),
+            self::STATUS_DONT_PUBLISH => Yii::t('app', 'BLOG_STATUS_DONT_PUBLISH'),
+        ];
+    }
     /**
      * Возвращает опубликованные посты
      * @return ActiveDataProvider
