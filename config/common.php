@@ -12,23 +12,10 @@
         'basePath' => dirname(__DIR__),
         'bootstrap' => ['log'],
         'modules' => [
-//            'admin' => [
-//                'class' => 'mdm\admin\Module',
-//                'controllerMap' => [
-//                    'assignment' => [
-//                        'class' => 'mdm\admin\controllers\AssignmentController',
-//                        'userClassName' => 'app\modules\user\models\User',
-//                        'idField' => 'id', // id field of model User
-//                    ]
-//                ],
-//                'layout' => '@app\admin\main', // default null. other avaliable value 'right-menu' and 'top-menu'
-//                'menus' => [
-//                    'assignment' => [
-//                        'label' => 'Grand Access' // change label
-//                    ],
-//                    'route' => null, // disable menu
-//                ],
-//            ],
+            'admin' => [
+                'class' => 'app\modules\admin\AdminModule',
+                'layout' => 'main',
+            ],
             'yii2images' => [
                 'class' => 'rico\yii2images\Module',
                 //be sure, that permissions ok
@@ -37,18 +24,6 @@
                 'imagesCachePath' => 'upload/cache', //path to resized copies
                 'graphicsLibrary' => 'GD', //but really its better to use 'Imagick'
                 //'placeHolderPath' => '@webroot/images/placeHolder.png', // if you want to get placeholder when image not exists, string will be processed by Yii::getAlias
-            ],
-
-            'admin' => [
-                'class' => 'app\modules\admin\AdminModule',
-                'layout' => 'main',
-                'controllerMap' => [
-                    'assignment' => [
-                        'class' => 'mdm\admin\controllers\AssignmentController',
-                        'userClassName' => 'app\modules\user\models\User',
-                        'idField' => 'id', // id field of model User
-                    ]
-                ],
             ],
             'main' => [
                 'class' => 'app\modules\main\Module',
@@ -79,10 +54,14 @@
                 'rules' => [
                     '' => 'main/default/index',
                     'contact' => 'main/contact/index',
+
+                  //  'blog/show/' => 'blog/default/show/',
+
                     '<_a:error>' => 'main/default/<_a>',
                     '<_a:(login|logout|signup|confirm-email|request-password-reset|reset-password)>' => 'user/default/<_a>',
 
                     '<_m:[\w\-]+>/<_c:[\w\-]+>/<id:\d+>' => '<_m>/<_c>/view',
+
                     '<_m:[\w\-]+>/<_c:[\w\-]+>/<id:\d+>/<_a:[\w\-]+>' => '<_m>/<_c>/<_a>',
                     '<_m:[\w\-]+>' => '<_m>/default/index',
                     '<_m:[\w\-]+>/<_c:[\w\-]+>' => '<_m>/<_c>/index',
@@ -108,11 +87,6 @@
                 'class' => 'yii\log\Dispatcher',
             ],
         ],
-//        'as access' => [
-//            'class' => 'mdm\admin\components\AccessControl',
-//            'allowActions' => [
-//                'admin/*', // add or remove allowed actions to this list
-//            ]
-//        ],
+
         'params' => $params,
     ];

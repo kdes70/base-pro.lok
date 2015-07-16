@@ -3,7 +3,7 @@ use yii\bootstrap\Carousel;
 ?>
 <!-- First Blog Post -->
     <h2>
-        <a href="/blog/show/<?=$model->slug?>"><?=$model->title?></a>
+        <a href="/blog/view/<?=$model->slug?>"><?=$model->title?></a>
     </h2>
     <p class="lead">by <a href="index.php"><?=$model->user_id?></a></p>
 

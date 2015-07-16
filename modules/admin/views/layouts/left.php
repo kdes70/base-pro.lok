@@ -1,6 +1,6 @@
 <?php
 use yii\bootstrap\Nav;
-
+use app\components\widgets\KCFinder;
 ?>
 <aside class="main-sidebar">
 
@@ -38,13 +38,17 @@ use yii\bootstrap\Nav;
                 'items' => [
                     '<li class="header">NAVIGATION</li>',
                     ['label' => '<i class="fa fa-dashboard"></i><span>dashboard</span>', 'url' => ['/admin']],
+                    KCFinder::widget(['name' => 'image', 'multiple' => true,]),
                     '<li class="header">Menu Yii2</li>',
                     ['label' => '<i class="fa fa-file-code-o"></i><span>Gii</span>', 'url' => ['/gii']],
                     ['label' => '<i class="fa fa-dashboard"></i><span>Debug</span>', 'url' => ['/debug']],
                     '<li class="header">SETING</li>',
-                    ['label' => '<i class="fa fa-users"></i><span>Users</span>', 'url' => ['/admin/users/index/']],
+                    ['label' => '<i class="fa fa-users"></i><span>Users</span>
+                                    <i class="fa fa-angle-left pull-right"></i>','url' => ['/admin/users/index/']],
+                    '<li class="header">SETING USER</li>',
+                    ['label' => '<i class="fa fa-dashboard"></i><span>Role</span>', 'url' => ['/admin/role']],
                     ['label' => '<i class="fa fa-book"></i><span>Blog</span>', 'url' => ['/admin/blog/index/']],
-                    ['label' => '<i class="fa fa-folder"></i><span>Category</span>', 'url' => ['/blog/category/index/']],
+                    ['label' => '<i class="fa fa-folder"></i><span>Category</span>', 'url' => ['/admin/category/index/']],
                     [
                         'label' => '<i class="glyphicon glyphicon-lock"></i><span>Sing in</span>', //for basic
                         'url' => ['/login'],

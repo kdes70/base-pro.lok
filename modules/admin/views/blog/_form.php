@@ -13,6 +13,8 @@ use dosamigos\selectize\SelectizeTextInput;
     use app\components\widgets\CKEditor;
     use iutbay\yii2kcfinder\KCFinderInputWidget ;
 
+
+
     use toxor88\switchery\Switchery;
     use yii\web\JsExpression;
     use kartik\switchinput\SwitchInput;
@@ -77,41 +79,27 @@ use dosamigos\selectize\SelectizeTextInput;
         ]);?>
     </div>
 
+<div class="col-md-12">
+    <div class="box box-info">
+        <div class="box-header">
+            <h3 class="box-title">CK Editor <small>Advanced and full of features</small></h3>
+            <!-- tools box -->
+            <div class="pull-right box-tools">
+                <button class="btn btn-info btn-sm" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="Collapse"><i class="fa fa-minus"></i></button>
+<!--                <button class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>-->
+            </div><!-- /. tools -->
+        </div><!-- /.box-header -->
+        <div class="box-body pad" style="display: block;">
+            <?= $form->field($model, 'text')->widget(CKEditor::className(),[
+                'editorOptions' => [
+                    'preset' => 'full', //разработанны стандартные настройки basic, standard, full данную возможность не обязательно использовать
+                    'inline' => false, //по умолчанию false
+                ],
+            ]); ?>
+        </div>
+    </div>
 
-    <?= $form->field($model, 'text')->widget(CKEditor::className(),[
-        'editorOptions' => [
-            'preset' => 'full', //разработанны стандартные настройки basic, standard, full данную возможность не обязательно использовать
-            'inline' => false, //по умолчанию false
-        ],
-    ]); ?>
-
-    <?php
-
-//        $KCFinder = new KCFinderInputWidget;
-//        $kcfOptions = array_merge($KCFinder->$kcfDefaultOptions, [
-//            'uploadURL' => Yii::getAlias('@web').'/upload',
-//            'access' => [
-//                'files' => [
-//                    'upload' => true,
-//                    'delete' => false,
-//                    'copy' => false,
-//                    'move' => false,
-//                    'rename' => false,
-//                ],
-//                'dirs' => [
-//                    'create' => true,
-//                    'delete' => false,
-//                    'rename' => false,
-//                ],
-//            ],
-//        ]);
-//
-//        // Set kcfinder session options
-//        Yii::$app->session->set('KCFINDER', $kcfOptions);
-
-
-    ?>
-
+</div>
     <div class="form_group">
         <div class="col-md-offset-2 col-md-10">
             <? $images = $model->getImages();?>
@@ -119,9 +107,9 @@ use dosamigos\selectize\SelectizeTextInput;
             <div class="row">
                 <? foreach($images as $image):?>
                     <? if($image):?>
-                <div class="col-md-3 text-center">
-                    <img src="<?= $image->getUrl('200x200')?>" alt=""/>
-                </div>
+                        <div class="col-md-3 text-center">
+                            <img src="<?= $image->getUrl('200x200')?>" alt=""/>
+                        </div>
                     <? endif; ?>
                 <? endforeach;?>
             </div>
@@ -129,25 +117,29 @@ use dosamigos\selectize\SelectizeTextInput;
         </div>
     </div>
 
-    <div class="row">
-
-            <div class="img-responsive"><?Html::img(Yii::getAlias('@webroot/upload/files/').$model->prev_img);?></div>
-
+    <div class="col-md-12">
+        <?= $form->field($model, 'image')->widget(\dosamigos\fileinput\BootstrapFileInput::className(), [
+            'options' => ['accept' => 'image/*', 'multiple' => true],
+            'clientOptions' => [
+                'previewFileType' => 'text',
+                'browseClass' => 'btn btn-success',
+                'uploadClass' => 'btn btn-info',
+                'removeClass' => 'btn btn-danger',
+                'removeIcon' => '<i class="glyphicon glyphicon-trash"></i> '
+            ]
+        ]);?>
     </div>
+
+
+
+
+
+
 
 
 <!--    --><?//= $form->field($model, 'image')->fileInput()?>
 
-    <?= $form->field($model, 'image')->widget(\dosamigos\fileinput\BootstrapFileInput::className(), [
-        'options' => ['accept' => 'image/*', 'multiple' => true],
-        'clientOptions' => [
-            'previewFileType' => 'text',
-            'browseClass' => 'btn btn-success',
-            'uploadClass' => 'btn btn-info',
-            'removeClass' => 'btn btn-danger',
-            'removeIcon' => '<i class="glyphicon glyphicon-trash"></i> '
-        ]
-    ]);?>
+
 
 
             <?=$form->field($model, 'status')->widget(Switchery::classname(), [

@@ -72,6 +72,13 @@
             </div>
         </div><!-- ./col -->
     </div>
+    <div class="row">
+        <?php echo \sintret\chat\ChatRoom::widget([
+        'url' => \yii\helpers\Url::to(['/admin/chat/send-chat']),
+        'userModel'=>  \app\modules\user\models\User::className(),
+       // 'userField' => 'avatarImage'
+        ]); ?>
+    </div>
 
     <p>
         <?= Html::a(Yii::t('app', 'ADMIN_USERS'), ['users/index'], ['class' => 'btn btn-primary']) ?>

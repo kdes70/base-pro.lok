@@ -30,7 +30,7 @@
                 ->limit($pages->limit)
                 ->all();
 
-            // var_dump($models);exit;
+         //   var_dump($models);exit;
 
             return $this->render('index', [
                 'blog_post' => $models,
@@ -39,8 +39,10 @@
             ]);
         }
 
-        public function actionShow($slug)
+        public function actionView($slug)
         {
+           // var_dump($models);exit;
+
             $model = new Blog();
             return $this->render('show', [
                 'model' => $model->find()

@@ -35,7 +35,8 @@
         "2amigos/yii2-file-input-widget": "~1.0",
         "kartik-v/yii2-widget-datepicker": "*",
         "kartik-v/yii2-field-range": "*",
-        "iutbay/yii2-kcfinder" : "*"
+        "iutbay/yii2-kcfinder" : "*",
+        "sintret/yii2-chat-adminlte": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

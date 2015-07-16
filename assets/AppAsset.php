@@ -24,6 +24,7 @@ class AppAsset extends AssetBundle
     ];
     public $js = [
         'js\highlight.pack.js',
+        'js\main.js',
     ];
     public $depends = [
         'app\assets\Html5ShivAsset',

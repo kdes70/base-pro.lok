@@ -101,7 +101,7 @@ class BlogController extends BaseController
             $model->image = UploadedFile::getInstance($model, 'image');
             if($model->image)
             {
-                $path = Yii::getAlias('@webroot/upload/files/').$model->image->baseName.'.'.$model->image->extension;
+                $path = Yii::getAlias('@webroot/upload/images/').$model->image->baseName.'.'.$model->image->extension;
                 $model->image->saveAs($path);
                 $model->attachImage($path);
             }
