@@ -1,7 +1,13 @@
 <?php
 use yii\bootstrap\Nav;
 use app\components\widgets\KCFinder;
+    use yii\helpers\Html;
+    /* @var $this \yii\web\View */
+    /* @var $content string */
+
 ?>
+
+
 <aside class="main-sidebar">
 
     <section class="sidebar">
@@ -42,11 +48,17 @@ use app\components\widgets\KCFinder;
                     '<li class="header">Menu Yii2</li>',
                     ['label' => '<i class="fa fa-file-code-o"></i><span>Gii</span>', 'url' => ['/gii']],
                     ['label' => '<i class="fa fa-dashboard"></i><span>Debug</span>', 'url' => ['/debug']],
-                    '<li class="header">SETING</li>',
+
+
+                    '<li class="header">SETING USER</li>',
                     ['label' => '<i class="fa fa-users"></i><span>Users</span>
                                     <i class="fa fa-angle-left pull-right"></i>','url' => ['/admin/users/index/']],
-                    '<li class="header">SETING USER</li>',
                     ['label' => '<i class="fa fa-dashboard"></i><span>Role</span>', 'url' => ['/admin/role']],
+                    ['label' => '<i class="fa fa-dashboard"></i><span>Assignment</span>', 'url' => ['/admin/assignment']],
+                    ['label' => '<i class="fa fa-dashboard"></i><span>Permission</span>', 'url' => ['/admin/permission']],
+
+
+                    '<li class="header">SETING</li>',
                     ['label' => '<i class="fa fa-book"></i><span>Blog</span>', 'url' => ['/admin/blog/index/']],
                     ['label' => '<i class="fa fa-folder"></i><span>Category</span>', 'url' => ['/admin/category/index/']],
                     [

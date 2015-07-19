@@ -1,6 +1,6 @@
 <?php
-/* @var $this yii\web\View */
-$this->title = Yii::$app->name;
+    /* @var $this yii\web\View */
+    $this->title = Yii::$app->name;
 ?>
 <div class="main-default-index">
 
@@ -9,24 +9,8 @@ $this->title = Yii::$app->name;
 
         <p class="lead">You have successfully created your Yii-powered application.</p>
 
-
+        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
     </div>
-    <div class="row" id="block_start">
-        <div class="col-md-6">
-            <p><a class="btn btn-lg btn-success center-block button_flat_width_270" href="/user/default/customer">Заказчик</a></p>
-            <div class="lead text-centr">Лучшие исполнители с гарантией
-                выполнения работы в срок
-                через безопасную сделку</div>
-        </div>
-        <div class="col-md-6">
-            <p><a class="btn btn-lg btn-warning center-block button_flat_width_270" href="/user/default/performer">Исполнитель</a></p>
-            <div class="lead text-centr">Получай заказы с гарантией оплаты
-                от лучших заказчиков рунета, и зарабатывай
-                на постоянном потоке заказов</div>
-        </div>
-    </div>
-
-
 
     <div class="body-content">
 

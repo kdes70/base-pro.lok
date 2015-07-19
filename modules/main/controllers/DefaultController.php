@@ -5,6 +5,8 @@
 
     class DefaultController extends Controller
     {
+
+
         public function actions()
         {
             return [
@@ -17,6 +19,8 @@
 
         public function actionIndex()
         {
+            $this->layout = '/index';
+
             return $this->render('index');
         }
     }

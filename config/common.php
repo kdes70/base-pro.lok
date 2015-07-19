@@ -14,8 +14,31 @@
         'modules' => [
             'admin' => [
                 'class' => 'app\modules\admin\AdminModule',
+                //'class' => 'mdm\admin\Module',
                 'layout' => 'main',
+               // 'layout' => 'left-menu',
+              //  'mainLayout' => '@app/views/layouts/main.php',
+                'controllerMap' => [
+                    'assignment' => [
+                        'class' => 'mdm\admin\controllers\AssignmentController',
+                         'userClassName' => 'app\modules\admin\models\User',  // fully qualified class name of your User model
+                        // Usually you don't need to specify it explicitly, since the module will detect it automatically
+                        'idField' => 'id',        // id field of your User model that corresponds to Yii::$app->user->id
+                        'usernameField' => 'username', // username field of your User model
+                        'searchClass' => 'app\modules\admin\models\UserSearch'    // fully qualified class name of your User model for searching
+                    ],
+                    'role' => [
+                        'class' => 'mdm\admin\controllers\RoleController',
+                    ],
+                    'permission' => [
+                        'class' => 'mdm\admin\controllers\PermissionController',
+                    ],
+                ],
             ],
+//            'admin2' =>[
+//                'class' => 'mdm\admin\Module',
+//                'layout' => 'left-menu',
+//            ],
             'yii2images' => [
                 'class' => 'rico\yii2images\Module',
                 //be sure, that permissions ok
@@ -87,6 +110,19 @@
                 'class' => 'yii\log\Dispatcher',
             ],
         ],
+//        'as access' => [
+//            'class' => 'mdm\admin\components\AccessControl',
+//            'allowActions' => [
+//               // 'admin/*',
+//                //'some-controller/some-action',
+//                // The actions listed here will be allowed to everyone including guests.
+//                // So, 'admin/*' should not appear here in the production, of course.
+//                // But in the earlier stages of your development, you may probably want to
+//                // add a lot of actions here until you finally completed setting up rbac,
+//                // otherwise you may not even take a first step.
+//            ]
+//        ],
+
 
         'params' => $params,
     ];

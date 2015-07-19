@@ -68,7 +68,7 @@ class Blog extends \yii\db\ActiveRecord
             [['status'], 'integer'],
             [['title', 'slug', 'text'], 'required'],
             ['text', 'string'],
-            ['image', 'file'],
+            ['image', 'image', 'extensions' => ['png', 'jpg', 'gif'], 'maxSize' => 1024*1024],
 
             ['tagNames', 'match', 'pattern' => '/^[\w\s,]+$/', 'message' => 'В тегах можно использовать только буквы.'],
             [['category_id', 'tagNames', 'user_id', 'publication_at'], 'safe'],

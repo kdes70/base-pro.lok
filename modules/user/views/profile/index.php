@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+    use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $model app\modules\user\models\User */
@@ -17,6 +18,26 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a(Yii::t('app', 'BUTTON_UPDATE'), ['update'], ['class' => 'btn btn-primary']) ?>
         <?= Html::a(Yii::t('app', 'LINK_CHANGE_PASSWORD'), ['change-password'], ['class' => 'btn btn-primary']) ?>
     </p>
+
+
+<!--    <p>Role:</p> --><?php //foreach ( ArrayHelper::map(Yii::$app->authManager->roles,'name','description') as $role ) {
+//
+//    echo $role->description;
+//    }?>
+
+
+    <?php var_dump(ArrayHelper::map(Yii::$app->authManager->roles,'name','description'))?>
+
+    <?php if(Yii::$app->user->can('customer')){
+        echo 'customer';
+    } elseif(Yii::$app->user->can('performer')){
+        echo 'performer';
+    } elseif(Yii::$app->user->can('author')){
+        echo 'author';
+    } elseif(Yii::$app->user->can('admin')){
+        echo 'admin';
+    }
+        ?>
 
     <?= DetailView::widget([
         'model' => $model,

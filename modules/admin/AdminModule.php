@@ -4,11 +4,11 @@ namespace app\modules\admin;
 
 use Yii;
 use yii\filters\AccessControl;
-use app\components\widgets\KCFinder;
 
-class AdminModule extends \yii\base\Module
+class AdminModule extends \mdm\admin\Module
 {
     public $controllerNamespace = 'app\modules\admin\controllers';
+    //public $layoutPath = '/rbac';
 
     public function behaviors()
     {
@@ -31,4 +31,6 @@ class AdminModule extends \yii\base\Module
         parent::init();
         // custom initialization code goes here
     }
+
+
 }

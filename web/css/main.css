@@ -1,0 +1,44 @@
+
+.top-image{
+    background: url("../img/top.jpg") center no-repeat;
+    background-size: cover;
+}
+
+.button_flat_width_270 {
+    width: 270px;
+}
+
+.btn-lg, .btn-group-lg > .btn{
+    font-size: 25px;
+}
+.text-centr{
+    text-align: center;
+}
+
+.navbar-inverse {
+    background-color: #5FBD37;
+    border-color: #32bd16;
+}
+.navbar-inverse .navbar-brand {
+    color: #fff;
+    font-size: 20px;
+}
+.navbar-inverse .navbar-nav > li > a {
+    color: #fff;
+}
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+    color: #fff;
+    background-color: #35bd08;
+}
+.active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+    color: #fff;
+    background-color: #D58512;
+}
+a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+    color: #777;
+    background-color: transparent;
+}
+
+#block_start .lead.text-centr{
+    color: #fff;
+}

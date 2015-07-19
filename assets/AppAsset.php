@@ -21,6 +21,7 @@ class AppAsset extends AssetBundle
         'css/site.css',
         'css/tags.css',
         'css/monokai_sublime.css',
+        'css/main.css',
     ];
     public $js = [
         'js\highlight.pack.js',

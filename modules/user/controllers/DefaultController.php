@@ -75,6 +75,25 @@ class DefaultController extends Controller
         }
     }
 
+    public function actionCustomer()
+    {
+        $model = new SignupForm();
+        if ($model->load(Yii::$app->request->post())) {
+            if ($user = $model->signup()) {
+                Yii::$app->getSession()->setFlash('success', 'Подтвердите ваш электронный адрес.');
+                return $this->goHome();
+            }
+        }
+            return $this->render('customer_form', [
+                'model' => $model,
+            ]);
+
+
+    }
+    public function actionPerformer()
+    {
+        return $this->render('performer_form');
+    }
     public function actionLogout()
     {
         Yii::$app->user->logout();
