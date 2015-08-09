@@ -2,7 +2,9 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-    use yii\helpers\ArrayHelper;
+use yii\helpers\ArrayHelper;
+use yii\bootstrap\Modal;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $model app\modules\user\models\User */
@@ -10,12 +12,17 @@ use yii\widgets\DetailView;
 $this->title = Yii::t('app', 'TITLE_PROFILE');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+
+
 <div class="user-profile">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a(Yii::t('app', 'BUTTON_UPDATE'), ['update'], ['class' => 'btn btn-primary']) ?>
+        <?//= Html::a(Yii::t('app', 'BUTTON_UPDATE'), ['update'], ['class' => 'btn btn-primary']) ?>
+        <?= Html::button(Yii::t('app', 'BUTTON_UPDATE'),  ['value' => Url::to('profile/update'), 'class' => 'btn btn-primary', 'id' => 'modelButton']) ?>
+
+
         <?= Html::a(Yii::t('app', 'LINK_CHANGE_PASSWORD'), ['change-password'], ['class' => 'btn btn-primary']) ?>
     </p>
 
@@ -24,6 +31,16 @@ $this->params['breadcrumbs'][] = $this->title;
 //
 //    echo $role->description;
 //    }?>
+
+    <?php
+        Modal::begin([
+            'header' => '<h1>'. Html::encode($this->title).'</h1>',
+            'id' => 'modal',
+            'size' => 'model-lg',
+        ]);
+        echo '<div id="modelContent"></div>';
+        Modal::end();
+    ?>
 
 
     <?php var_dump(ArrayHelper::map(Yii::$app->authManager->roles,'name','description'))?>
@@ -44,6 +61,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'username',
             'email',
+            'first_name',
         ],
     ]) ?>
 

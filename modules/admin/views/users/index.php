@@ -39,7 +39,7 @@ use app\components\grid\ActionColumn;
                     'attribute2' => 'date_to',
                     'type' => DatePicker::TYPE_RANGE,
                     'separator' => '-',
-                    'pluginOptions' => ['format' => 'yyyy-mm-dd', 'autoclose' => true,]
+                    'pluginOptions' => ['format' => 'yyyy-mm-dd', 'clearBtn' => true]
                 ]),
                 'attribute' => 'created_at',
                 'format' => 'datetime',

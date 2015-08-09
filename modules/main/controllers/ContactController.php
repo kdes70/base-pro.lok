@@ -19,6 +19,8 @@
 
         public function actionIndex()
         {
+            echo '<pre>';
+            var_dump( Yii::$app->request->getPathInfo());exit;
             $model = new ContactForm();
             if ($user = Yii::$app->user->identity) {
                 /** @var \app\modules\user\models\User $user */

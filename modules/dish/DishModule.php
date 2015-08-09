@@ -2,7 +2,7 @@
 
 namespace app\modules\dish;
 
-class Module extends \yii\base\Module
+class DishModule extends \yii\base\Module
 {
     public $controllerNamespace = 'app\modules\dish\controllers';
 

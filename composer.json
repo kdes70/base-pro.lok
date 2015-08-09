@@ -12,7 +12,7 @@
         "irc": "irc://irc.freenode.net/yii",
         "source": "https://github.com/yiisoft/yii2"
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true,
 
     "require": {
@@ -36,7 +36,9 @@
         "kartik-v/yii2-widget-datepicker": "*",
         "kartik-v/yii2-field-range": "*",
         "iutbay/yii2-kcfinder" : "*",
-        "sintret/yii2-chat-adminlte": "dev-master"
+        "sintret/yii2-chat-adminlte": "dev-master",
+        "uran1980/yii2-jquery-essential": "dev",
+        "kartik-v/dependent-dropdown": "@dev"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

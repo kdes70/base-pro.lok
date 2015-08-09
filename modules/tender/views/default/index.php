@@ -1,13 +1,11 @@
 <?php
-    use yii\helpers\Url;
-    use yii\helpers\Html;
-    /* @var $this yii\web\View */
-    $this->title = Yii::$app->name;
+/* @var $this yii\web\View */
+$this->title = Yii::$app->name;
     $this->registerJsFile('@web/js/main-index.js',['position'=>$this::POS_END], 'main-index');
 ?>
-<div class="main-default-index">
+<div class="tender-default-index">
 
-    <div class="jumbotron">
+       <div class="jumbotron">
         <h1>Finishing work!</h1>
 
         <p class="lead">You have successfully created your Yii-powered application.</p>
@@ -16,25 +14,13 @@
     <?php if(Yii::$app->user->isGuest):?>
         <div class="row" id="block_start">
             <div class="col-md-6">
-                <p>
-                    <?php echo Html::a(Yii::t('app', 'USER_CUSTOMER'), Url::to('user/default/signup'),
-                        [
-                        'class' => 'btn btn-lg btn-success center-block button_flat_width_270',
-                        'id' => 'customer',
-                        ]);?>
-                 </p>
+                <p><a class="btn btn-lg btn-success center-block button_flat_width_270" href="/tender/default/customer">Заказчик</a></p>
                 <div class="lead text-centr">Лучшие исполнители с гарантией
                     выполнения работы в срок
                     через безопасную сделку</div>
             </div>
             <div class="col-md-6">
-                <p>
-                    <?php echo Html::a(Yii::t('app', 'USER_PERFORMER'), Url::to('user/default/signup'),
-                        [
-                            'class' => 'btn btn-lg btn-warning center-block button_flat_width_270',
-                            'id' => 'performer',
-                        ]);?>
-                </p>
+                <p><a class="btn btn-lg btn-warning center-block button_flat_width_270" href="/tender/default/performer">Исполнитель</a></p>
                 <div class="lead text-centr">Получай заказы с гарантией оплаты
                     от лучших заказчиков рунета, и зарабатывай
                     на постоянном потоке заказов</div>

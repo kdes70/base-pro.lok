@@ -1,3 +1,33 @@
-/**
- * Created by ִלטענטי on 15.07.2015.
- */
+$( document ).ready(function() {
+
+
+    $('#tender-agreement').on('change', function() {
+        if($(this).prop('checked'))
+        {
+            $('#tender-cost, #tender-priceby').prop('disabled', true);
+        }else{
+
+            $('#tender-cost, #tender-priceby').prop('disabled', false);
+        }
+    });
+
+
+
+//Modal update user profile
+    $(function(){
+        $('#modelButton').click(function(){
+            $('#modal').modal('show')
+                .find('#modelContent')
+                .load($(this).attr('value'));
+        });
+    });
+
+
+
+
+
+
+
+
+
+});

@@ -17,12 +17,7 @@
             ['label' => Yii::t('app', 'NAV_HOME'), 'url' => ['/main/default/index']],
             ['label' => Yii::t('app', 'NAW_CONTACT'), 'url' => ['/main/contact/index']],
             ['label' => Yii::t('app', 'NAW_BLOG'), 'url' => ['/blog/default/index']],
-
             ['label' => Yii::t('app', 'NAW_CONTRACTOR'), 'url' => ['/tender/default/index']],
-
-            Yii::$app->user->can('customer') ?
-                ['label' => Yii::t('app', 'CREATE_TENDER'), 'url' => ['/tender/default/addnew']]
-                : false,
             Yii::$app->user->isGuest ?
                 ['label' => Yii::t('app', 'NAV_SIGNUP'), 'url' => ['/user/default/signup']] :
                 false,

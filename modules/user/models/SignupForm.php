@@ -14,6 +14,8 @@ class SignupForm extends Model
     public $email;
     public $password;
     public $verifyCode;
+    public $role;
+    public $active = 'performer';
 
     /**
      * @inheritdoc
@@ -36,6 +38,7 @@ class SignupForm extends Model
             ['password', 'string', 'min' => 6],
 
             ['verifyCode', 'captcha', 'captchaAction' => '/user/default/captcha'],
+            ['role', 'string'],
         ];
     }
 
@@ -49,6 +52,7 @@ class SignupForm extends Model
             'email' => Yii::t('app', 'USER_EMAIL'),
             'password' => Yii::t('app', 'USER_PASSWORD'),
             'verifyCode' => Yii::t('app', 'USER_VERIFY_CODE'),
+            'role' => Yii::t('app', 'USER_ROLE'),
         ];
     }
 
@@ -61,24 +65,30 @@ class SignupForm extends Model
     {
         if ($this->validate()) {
             $user = new User();
+
             $user->username = $this->username;
             $user->email = $this->email;
             $user->setPassword($this->password);
             $user->status = User::STATUS_WAIT;
             $user->generateAuthKey();
             $user->generateEmailConfirmToken();
+            $user->role = $this->role;
+
+            $auth = Yii::$app->authManager;
+            $authRole = $auth->getRole($this->role);
 
             if ($user->save()) {
+
+                $auth->assign($authRole, $user->getId());
+
                 Yii::$app->mailer->compose('confirmEmail', ['user' => $user])
                     ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name])
                     ->setTo($this->email)
                     ->setSubject('Email confirmation for ' . Yii::$app->name)
                     ->send();
             }
-
             return $user;
         }
-
         return null;
     }
 }

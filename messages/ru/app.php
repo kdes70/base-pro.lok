@@ -10,6 +10,7 @@ return [
     'NAV_LOGOUT' => 'Выход',
     'NAW_DISH_MENU' => 'Меню ресторана',
     'NAV_ADMIN' => 'Админ панель',
+    'NAW_CONTRACTOR' => 'Подрядчик',
     'ADMIN_USERS' => 'Пользователи',
 
     'BUTTON_SEND' => 'Отправить',
@@ -35,7 +36,8 @@ return [
     'CONTACT_VERIFY_CODE' => 'Код',
     'CONTACT_THANKS' => 'Спасибо! Мы свяжемся с Вами в скором  времени.',
 
-    'USER_USERNAME' => 'Имя пользователя',
+    'USER_USERNAME' => 'Логин',
+    'USER_FIRST_NAME' => 'Имя пользователя',
     'USER_PASSWORD' => 'Пароль',
     'USER_NEW_PASSWORD' => 'Новый пароль',
     'USER_REPEAT_PASSWORD' => 'Повторите пароль',
@@ -50,6 +52,10 @@ return [
     'USER_STATUS_WAIT' => 'Ожидает подтверждения',
     'USER_VERIFY_CODE' => 'Код',
     'USER_BUTTON_SIGNUP' => 'Войти',
+
+    'USER_CUSTOMER' => 'Заказчик',
+    'USER_PERFORMER' => 'Исполнитель',
+
 
     'PLEASE_FILL_FOR_LOGIN' => 'Для входа на сайт введите данные своей учётной записи:',
     'PLEASE_FILL_FOR_SIGNUP' => 'Для регистрации заполните следующие поля:',

@@ -2,12 +2,15 @@
 
 namespace app\modules\user\models;
 
+use app\modules\tender\models\Tender;
 use Yii;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
 use yii\helpers\ArrayHelper;
+use app\modules\blog\models\Blog;
+use app\modules\tender\models\TenderCustomer;
 /**
  * This is the model class for table "{{%user}}".
  *
@@ -21,6 +24,11 @@ use yii\helpers\ArrayHelper;
  * @property string $password_reset_token
  * @property string $email
  * @property integer $status
+ * @property string $first_name
+ * @property string $role
+ * @property Blog[] $blogs
+ * @property Profile $profile
+ * @property TenderCustomer[] $tenderCustomers
  */
 class User extends ActiveRecord implements IdentityInterface
 {
@@ -29,6 +37,14 @@ class User extends ActiveRecord implements IdentityInterface
     const STATUS_WAIT = 2;
 
     const SCENARIO_PROFILE = 'profile';
+    const SCENARIO_PERFORMER = 'performer';
+    const SCENARIO_CUSTOMER = 'customer';
+
+    const USER_CUSTOMER = 'customer';
+    const USER_PERFORMER = 'performer';
+
+    public $role;
+
 
     /**
      * @inheritdoc
@@ -66,13 +82,17 @@ class User extends ActiveRecord implements IdentityInterface
             ['status', 'integer'],
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => array_keys(self::getStatusesArray())],
+
+            ['first_name', 'string', 'max' => 32],
+
         ];
     }
 
     public function scenarios()
     {
         return ArrayHelper::merge(parent::scenarios(), [
-            self::SCENARIO_PROFILE => ['email'],
+            self::SCENARIO_PROFILE => ['email', 'first_name'],
+            //self::SCENARIO_CUSTOMER => ['email', '$password_hash']
         ]);
     }
 
@@ -88,6 +108,7 @@ class User extends ActiveRecord implements IdentityInterface
             'username' => Yii::t('app', 'USER_USERNAME'),
             'email' => Yii::t('app', 'USER_EMAIL'),
             'status' => Yii::t('app', 'USER_STATUS'),
+            'first_name' => Yii::t('app', 'USER_FIRST_NAME'),
         ];
     }
 
@@ -105,6 +126,21 @@ class User extends ActiveRecord implements IdentityInterface
             self::STATUS_BLOCKED => Yii::t('app', 'USER_STATUS_BLOCKED'),
             self::STATUS_ACTIVE => Yii::t('app', 'USER_STATUS_ACTIVE'),
             self::STATUS_WAIT => Yii::t('app', 'USER_STATUS_WAIT'),
+        ];
+    }
+
+    //TODO ????
+    public function getRoleUserName()
+    {
+        $roles = self::getRoleUserArray();
+        return isset($roles[$this->role]) ? $roles[$this->role] : '';
+    }
+
+    public static function getRoleUserArray()
+    {
+        return [
+            self:: USER_CUSTOMER => Yii::t('app', 'USER_CUSTOMER'),
+            self:: USER_PERFORMER => Yii::t('app', 'USER_PERFORMER'),
         ];
     }
 
@@ -138,6 +174,44 @@ class User extends ActiveRecord implements IdentityInterface
     public function getAuthKey()
     {
         return $this->auth_key;
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getBlogs()
+    {
+        return $this->hasMany(Blog::className(), ['user_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getProfile()
+    {
+        return $this->hasOne(Profile::className(), ['user_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getTender()
+    {
+        return $this->hasMany(TenderCustomer::className(), ['customer_id' => 'id']);
+    }
+
+    public function getCustomerTenders()
+    {
+        return $this->hasMany(Tender::className(),['tender_id' => 'id'])
+            ->viaTable(TenderCustomer::className(), ['customer_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getTenderCustomers()
+    {
+        return $this->hasMany(TenderCustomer::className(), ['customer_id' => 'id']);
     }
 
     /**

@@ -42,3 +42,34 @@ a:hover, .navbar-inverse .navbar-nav > li > a:focus {
 #block_start .lead.text-centr{
     color: #fff;
 }
+
+
+/*tender*/
+
+.post_inlint{
+    display: inline;
+}
+.float_right{
+    float: right;
+}
+
+.tender_price{
+    padding: 5px;
+    font-size: 20px;
+    color: rgb(54, 137, 19);
+}
+.tender_footer{
+    height: 30px;
+    padding: 10px 0;
+
+}
+.tender_footer p{
+    display: inline-block;
+}
+
+#block_user_roles .btn{
+    width: 228px;
+    height: 56px;
+    line-height: 44px;
+    font-size: 24px;
+}

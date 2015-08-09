@@ -512,16 +512,16 @@
         },
         {
             "name": "bower-asset/html5shiv",
-            "version": "3.7.2",
+            "version": "3.7.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aFarkas/html5shiv.git",
-                "reference": "40df868a76f1f19ea23b123d1480d44a7195f349"
+                "reference": "ed28c56c071bddfe7d635ad88995674957a016be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aFarkas/html5shiv/zipball/40df868a76f1f19ea23b123d1480d44a7195f349",
-                "reference": "40df868a76f1f19ea23b123d1480d44a7195f349",
+                "url": "https://api.github.com/repos/aFarkas/html5shiv/zipball/ed28c56c071bddfe7d635ad88995674957a016be",
+                "reference": "ed28c56c071bddfe7d635ad88995674957a016be",
                 "shasum": ""
             },
             "type": "bower-asset-library",
@@ -787,16 +787,16 @@
         },
         {
             "name": "bower-asset/sifter",
-            "version": "v0.4.1",
+            "version": "v0.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/brianreavis/sifter.js.git",
-                "reference": "b5744683da97726265ce4d9ae42ce13d10efbf4d"
+                "reference": "bdd2badbce30396ed9a12951b13e8e23d2adf43a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/brianreavis/sifter.js/zipball/b5744683da97726265ce4d9ae42ce13d10efbf4d",
-                "reference": "b5744683da97726265ce4d9ae42ce13d10efbf4d",
+                "url": "https://api.github.com/repos/brianreavis/sifter.js/zipball/bdd2badbce30396ed9a12951b13e8e23d2adf43a",
+                "reference": "bdd2badbce30396ed9a12951b13e8e23d2adf43a",
                 "shasum": ""
             },
             "type": "bower-asset-library",
@@ -1504,20 +1504,20 @@
         },
         {
             "name": "kartik-v/yii2-widget-datepicker",
-            "version": "v1.3.2",
+            "version": "v1.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-widget-datepicker.git",
-                "reference": "3fb31048bb70ebddf94a827aec77779835305629"
+                "reference": "368b181ef658c05707fe41dd16eee4d9ffd9da38"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-widget-datepicker/zipball/3fb31048bb70ebddf94a827aec77779835305629",
-                "reference": "3fb31048bb70ebddf94a827aec77779835305629",
+                "url": "https://api.github.com/repos/kartik-v/yii2-widget-datepicker/zipball/368b181ef658c05707fe41dd16eee4d9ffd9da38",
+                "reference": "368b181ef658c05707fe41dd16eee4d9ffd9da38",
                 "shasum": ""
             },
             "require": {
-                "kartik-v/yii2-krajee-base": "*"
+                "kartik-v/yii2-krajee-base": "~1.7"
             },
             "type": "yii2-extension",
             "autoload": {
@@ -1527,7 +1527,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "BSD 3-Clause"
+                "BSD-3-Clause"
             ],
             "authors": [
                 {
@@ -1549,7 +1549,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2015-03-02 13:03:59"
+            "time": "2015-07-19 04:49:03"
         },
         {
             "name": "kartik-v/yii2-widget-switchinput",

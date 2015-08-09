@@ -17,6 +17,7 @@ class AppAsset extends AssetBundle
 {
     public $basePath = '@webroot';
     public $baseUrl = '@web';
+
     public $css = [
         'css/site.css',
         'css/tags.css',
@@ -30,7 +31,9 @@ class AppAsset extends AssetBundle
     public $depends = [
         'app\assets\Html5ShivAsset',
         'app\assets\RespondAsset',
+        'app\assets\FontAwesomeAsset',
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
+
     ];
 }

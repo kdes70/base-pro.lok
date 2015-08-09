@@ -3,6 +3,8 @@
     namespace app\modules\user\controllers;
 
     use app\modules\user\models\User;
+    use app\modules\user\models\Profile;
+
     use yii\filters\AccessControl;
     use yii\web\Controller;
     use Yii;
@@ -32,18 +34,58 @@
             ]);
         }
 
+        public function actionProfile()
+        {
+           // $model = new Profile(['scenario' => 'SCENARIO_PROFILE']);
+//            $model = new Profile();
+//
+//            if ($model->load(Yii::$app->request->post())) {
+//                if ($model->validate()) {
+//                    // form inputs are valid, do something here
+//                    return $this->redirect(['index']);
+//                }
+//            }
+
+            $model = ($model = Profile::findOne(Yii::$app->user->id)) ? $model : new Profile();
+            if($model->load(Yii::$app->request->post()) && $model->validate()):
+                if($model->updateProfile()):
+                    Yii::$app->session->setFlash('success', Yii::t('app', 'SUCCESS_EDIT_PROFILE'));
+                else:
+                    Yii::$app->session->setFlash('error', Yii::t('app', 'ERROR_EDIT_PROFILE'));
+                    Yii::error('Ошибка записи - '. Yii::t('app', 'ERROR_EDIT_PROFILE'));
+                    return $this->refresh();
+                endif;
+
+            endif;
+
+            return $this->render('profile', [
+                'model' => $model,
+            ]);
+        }
+
+
         public function actionUpdate()
         {
             $model = $this->findModel();
             $model->scenario = User::SCENARIO_PROFILE;
 
-            if ($model->load(Yii::$app->request->post()) && $model->save()) {
-                return $this->redirect(['index']);
+            if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+                if($model->save())
+                {
+                    Yii::$app->session->setFlash('success', Yii::t('app', 'SUCCESS_EDIT_PROFILE'));
+                    return $this->redirect(['index']);
+                }else{
+                    Yii::$app->session->setFlash('error', Yii::t('app', 'ERROR_EDIT_PROFILE'));
+                    Yii::error('Ошибка записи - '. Yii::t('app', 'ERROR_EDIT_PROFILE'));
+                    return $this->redirect(['index']);
+                }
+
             } else {
-                return $this->render('update', [
+                return $this->renderAjax('update', [
                     'model' => $model,
                 ]);
             }
+
         }
 
         public function actionChangePassword()

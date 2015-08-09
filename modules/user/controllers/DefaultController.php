@@ -2,6 +2,8 @@
 
 namespace app\modules\user\controllers;
 
+use app\modules\geo\models\Countries;
+use app\modules\geo\models\Regions;
 use app\modules\user\models\ConfirmEmailForm;
 use app\modules\user\models\LoginForm;
 use app\modules\user\models\PasswordResetRequestForm;
@@ -16,6 +18,7 @@ use Yii;
 
 class DefaultController extends Controller
 {
+
     public function behaviors()
     {
         return [
@@ -75,25 +78,9 @@ class DefaultController extends Controller
         }
     }
 
-    public function actionCustomer()
-    {
-        $model = new SignupForm();
-        if ($model->load(Yii::$app->request->post())) {
-            if ($user = $model->signup()) {
-                Yii::$app->getSession()->setFlash('success', 'Подтвердите ваш электронный адрес.');
-                return $this->goHome();
-            }
-        }
-            return $this->render('customer_form', [
-                'model' => $model,
-            ]);
 
 
-    }
-    public function actionPerformer()
-    {
-        return $this->render('performer_form');
-    }
+
     public function actionLogout()
     {
         Yii::$app->user->logout();
@@ -104,15 +91,25 @@ class DefaultController extends Controller
     public function actionSignup()
     {
         $model = new SignupForm();
+      //  var_dump(Yii::$app->request->referrer); exit;
+
+        $model->role = 'performer';
+
+        $model_countri = new Countries();
+        $model_region = new Regions();
+
         if ($model->load(Yii::$app->request->post())) {
             if ($user = $model->signup()) {
                 Yii::$app->getSession()->setFlash('success', 'Подтвердите ваш электронный адрес.');
+
                 return $this->goHome();
             }
         }
 
         return $this->render('signup', [
             'model' => $model,
+            'model_countri' => $model_countri,
+            'model_region' => $model_region,
         ]);
     }
 

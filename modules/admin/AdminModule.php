@@ -19,7 +19,7 @@ class AdminModule extends \mdm\admin\Module
                     [
                         'allow' => true,
                         //'roles' => ['@'],
-                        'roles' => ['admin'],
+                        'roles' => ['admin', 'moderator'],
                     ],
                 ],
             ],

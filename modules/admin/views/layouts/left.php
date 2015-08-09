@@ -48,6 +48,7 @@ use app\components\widgets\KCFinder;
                     '<li class="header">Menu Yii2</li>',
                     ['label' => '<i class="fa fa-file-code-o"></i><span>Gii</span>', 'url' => ['/gii']],
                     ['label' => '<i class="fa fa-dashboard"></i><span>Debug</span>', 'url' => ['/debug']],
+                    ['label' => '<i class="fa fa-dashboard"></i><span>tender</span>', 'url' => ['/admin/tenders/index/']],
 
 
                     '<li class="header">SETING USER</li>',
@@ -56,6 +57,8 @@ use app\components\widgets\KCFinder;
                     ['label' => '<i class="fa fa-dashboard"></i><span>Role</span>', 'url' => ['/admin/role']],
                     ['label' => '<i class="fa fa-dashboard"></i><span>Assignment</span>', 'url' => ['/admin/assignment']],
                     ['label' => '<i class="fa fa-dashboard"></i><span>Permission</span>', 'url' => ['/admin/permission']],
+                    ['label' => '<i class="fa fa-dashboard"></i><span>Rule</span>', 'url' => ['/admin/rule']],
+                    ['label' => '<i class="fa fa-dashboard"></i><span>Route</span>', 'url' => ['/admin/route']],
 
 
                     '<li class="header">SETING</li>',
